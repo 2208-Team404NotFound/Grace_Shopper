@@ -9,9 +9,6 @@ const server = http.createServer(app)
 const express = require('express');
 const morgan = require('morgan');
 
-// const { client } = require('./db');
-// client.connect();
-
 server.listen(PORT, () => {
     console.log(
         chalk.blueBright("Server is listening on PORT:"),
