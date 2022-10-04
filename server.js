@@ -1,12 +1,21 @@
 require('dotenv').config();
 
-const { PORT = 5000 } = process.env
+const http = require("http")
+const chalk = require("chalk")
+const app = require("./app")
+
+const PORT = process.env["PORT"] ?? 5000
+const server = http.createServer(app)
 const express = require('express');
-const server = express();
 const morgan = require('morgan');
 
-server.use(morgan('dev'));
-server.use(express.json());
+// const { client } = require('./db');
+// client.connect();
 
-const { client } = require('./db');
-client.connect();
+server.listen(PORT, () => {
+    console.log(
+        chalk.blueBright("Server is listening on PORT:"),
+        chalk.yellow(PORT),
+        chalk.blueBright("Get your routine on!")
+    )
+});
