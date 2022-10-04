@@ -3,17 +3,24 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "react-scripts build",
+    "start:front": "PORT=8080 react-scripts start",
+    "seed:dev": "nodemon ./db/seed.js",
+    "seed": "node ./db/seed.js",
+    "start:dev": "nodemon server.js",
+    "start": "node server.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/2208-Team404NotFound/Grace_Shopper.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/2208-Team404NotFound/Grace_Shopper/issues"
+  "keywords": [
+    "node",
+    "express",
+    "postgresql",
+    "jquery",
+    "javascript"
+  ],
+  "author": "Harrison Gelman",
+  "license": "",
+  "devDependencies": {
+    "nodemon": "^2.0.20"
   },
   "dependencies": {
     "axios": "^0.27.2",
@@ -32,6 +39,16 @@
     "react-router-dom": "^6.4.1",
     "react-scripts": "^5.0.1"
   },
-  "homepage": "https://github.com/2208-Team404NotFound/Grace_Shopper#readme",
-  "description": ""
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
 }
