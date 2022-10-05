@@ -1,5 +1,5 @@
 const client = require('./client');
-const { getUser, createUser } = require('./users');
+const { getUser, createUser, getUserById } = require('./users');
 
 const dropTables = async () => {
     try {
@@ -66,9 +66,9 @@ const createInitialUsers = async () => {
         console.log('Starting to create tables!');
 
         const usersToCreate = [
-            { id: 1, username: 'markymark', password: 'shithead123' },
-            { id: 2, username: 'GrungeElFz', password: 'password' },
-            { id: 3, username: 'HarrisonBurner', password: 'password123' }
+            { username: 'markymark', password: 'shithead123' },
+            { username: 'GrungeElFz', password: 'password' },
+            { username: 'HarrisonBurner', password: 'password123' }
         ];
 
         const users = await Promise.all(usersToCreate.map(createUser));
@@ -76,7 +76,7 @@ const createInitialUsers = async () => {
         console.log(`Users created: ${users}`);
     } catch (error) {
         console.log(`Error creating users: ${error}`);
-    }  
+    }
 }
 
 const rebuildDB = async () => {
@@ -86,13 +86,13 @@ const rebuildDB = async () => {
         await createInitialUsers();
         await testDB();
     } catch (error) {
-        console.log('Error during rebuildDB!')
+        console.log(`Error during rebuildDB: ${error}`);
     }
 };
 
 const testDB = async () => {
     console.log('Starting to test database...');
-    const results = await getUser({ username: 'markymark', password: 'shithead123' });
+    const results = await getUserById(1);
     console.log(results);
     console.log('Finished testing!');
 }
