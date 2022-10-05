@@ -11,7 +11,7 @@ const morgan = require('morgan');
 
 server.listen(PORT, () => {
     console.log(
-        chalk.blueBright("Server is listening on PORT:"),
+        chalk.blueBright(`Server is listening on PORT: ${PORT}`),
         chalk.yellow(PORT),
         chalk.blueBright("Get your routine on!")
     )
