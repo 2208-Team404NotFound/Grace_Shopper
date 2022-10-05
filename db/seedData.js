@@ -24,7 +24,31 @@ const createTables = async () => {
             username VARCHAR(23) UNIQUE NOT NULL,
             password VARCHAR(23) NOT NULL
         );
-        `)
+
+        CREATE TABLE artists (
+            id PRIMARY KEY,
+            name VARCHAR(50) UNIQUE NOT NULL
+        );
+
+        CREATE TABLE albums (
+            id PRIMARY KEY,
+            artist_name VARCHAR(50) UNIQUE NOT NULL
+            album_name VARCHAR(50) NOT NULL,
+            album_price NUMERIC(5, 2),
+            year INT
+        );
+
+        CREATE TABLE shopping_cart (
+            id PRIMARY KEY,
+            order_id INT UNIQUE NOT NULL,
+            album_id INT NOT NULL,
+            quantity INT NOT NULL
+        );
+
+        CREATE TABLE orders (
+            user_id INT UNIQUE NOT NULL 
+        );
+        `);
 
     } catch (error) {
         console.error(`Error building tables: ${error}`)
