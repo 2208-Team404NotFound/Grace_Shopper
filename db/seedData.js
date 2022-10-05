@@ -66,8 +66,10 @@ const createInitialUsers = async () => {
         console.log('Starting to create tables!');
 
         const usersToCreate = [
-            { username: 'markymark', password: 'shithead123' }
-        ]
+            { id: 1, username: 'markymark', password: 'shithead123' },
+            { id: 2, username: 'GrungeElFz', password: 'password' },
+            { id: 3, username: 'HarrisonBurner', password: 'password123' }
+        ];
 
         const users = await Promise.all(usersToCreate.map(createUser));
 
@@ -90,9 +92,9 @@ const rebuildDB = async () => {
 
 const testDB = async () => {
     console.log('Starting to test database...');
-    const results = await getUser({ username: 'markymark', password: 'shithead123' })
-    console.log(results)
-    console.log('Finished testing!')
+    const results = await getUser({ username: 'markymark', password: 'shithead123' });
+    console.log(results);
+    console.log('Finished testing!');
 }
 
 module.exports = {
