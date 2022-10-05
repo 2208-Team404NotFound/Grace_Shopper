@@ -1,5 +1,5 @@
 const client = require('./client');
-const { createUser } = require('./users');
+const { getUser, createUser } = require('./users');
 
 const dropTables = async () => {
     try {
@@ -72,9 +72,9 @@ const rebuildDB = async () => {
 };
 
 const testDB = async () => {
-    console.log('Starting test...');
-    const results = await createUser({ username: 'markymark', password: 'shithead123' })
-    console.log(results)
+    console.log('Starting to test database...');
+    // const results = await getUser({ username: 'markymark', password: 'shithead123' })
+    // console.log(results)
     console.log('Finished testing!')
 }
 
