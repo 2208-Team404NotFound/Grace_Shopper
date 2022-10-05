@@ -15,7 +15,7 @@ const dropTables = async () => {
 
         console.log('Finished dropping tables!');
     } catch (error) {
-        console.error(`Error dropping tables: ${error}`);
+        console.log(`Error dropping tables: ${error}`);
     }
 }
 
@@ -56,6 +56,22 @@ const createTables = async () => {
         );
 
     } catch (error) {
-        console.error(`Error building tables: ${error}`)
+        console.log(`Error building tables: ${error}`)
     }
+}
+
+const rebuildDB = async () => {
+    try {
+        await dropTables();
+        await createTables();
+
+    } catch (error) {
+        console.log('Error during rebuildDB!')
+    }
+}
+
+module.exports = {
+    rebuildDB,
+    dropTables,
+    createTables
 }
