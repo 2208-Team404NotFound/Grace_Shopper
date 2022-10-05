@@ -27,8 +27,8 @@ const createTables = async () => {
         await client.query(`
         CREATE TABLE users (
             id SERIAL PRIMARY KEY,
-            username VARCHAR(23) UNIQUE NOT NULL,
-            password VARCHAR(23) NOT NULL
+            username VARCHAR(255) UNIQUE NOT NULL,
+            password VARCHAR(255) NOT NULL
         ); `
 
             // CREATE TABLE artists (
@@ -57,14 +57,31 @@ const createTables = async () => {
         );
 
     } catch (error) {
-        console.log(`Error building tables: ${error}`)
+        console.log(`Error building tables: ${error}`);
     }
 };
+
+const createInitialUsers = async () => {
+    try {
+        console.log('Starting to create tables!');
+
+        const usersToCreate = [
+            { username: 'markymark', password: 'shithead123' }
+        ]
+
+        const users = await Promise.all(usersToCreate.map(createUser));
+
+        console.log(`Users created: ${users}`);
+    } catch (error) {
+        console.log(`Error creating users: ${error}`);
+    }  
+}
 
 const rebuildDB = async () => {
     try {
         await dropTables();
         await createTables();
+        await createInitialUsers();
         await testDB();
     } catch (error) {
         console.log('Error during rebuildDB!')
@@ -73,8 +90,8 @@ const rebuildDB = async () => {
 
 const testDB = async () => {
     console.log('Starting to test database...');
-    // const results = await getUser({ username: 'markymark', password: 'shithead123' })
-    // console.log(results)
+    const results = await getUser({ username: 'markymark', password: 'shithead123' })
+    console.log(results)
     console.log('Finished testing!')
 }
 
