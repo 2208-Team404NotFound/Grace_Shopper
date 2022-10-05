@@ -1,4 +1,5 @@
 const client = require('./client');
+const { createUser } = require('./users');
 
 const dropTables = async () => {
     try {
@@ -17,7 +18,7 @@ const dropTables = async () => {
     } catch (error) {
         console.log(`Error dropping tables: ${error}`);
     }
-}
+};
 
 const createTables = async () => {
     try {
@@ -58,20 +59,27 @@ const createTables = async () => {
     } catch (error) {
         console.log(`Error building tables: ${error}`)
     }
-}
+};
 
 const rebuildDB = async () => {
     try {
         await dropTables();
         await createTables();
-
+        await testDB();
     } catch (error) {
         console.log('Error during rebuildDB!')
     }
+};
+
+const testDB = async () => {
+    console.log('Starting test...');
+    const results = await createUser({ username: 'markymark', password: 'shithead123' })
+    console.log(results)
+    console.log('Finished testing!')
 }
 
 module.exports = {
     rebuildDB,
     dropTables,
     createTables
-}
+};
