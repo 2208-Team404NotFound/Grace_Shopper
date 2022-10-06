@@ -15,7 +15,6 @@ export const login = async (username, password, setToken, setLogin, setUser) => 
                 password
             })
         });
-        console.log(response);
         const results = await response.json();
 
         if (!results.error) {
