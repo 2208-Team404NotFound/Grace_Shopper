@@ -1,1 +1,3 @@
-// importing and exporting components
+import { Auth } from './userAuth.js'
+
+export { Auth }
