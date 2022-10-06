@@ -17,9 +17,8 @@ usersRouter.post('/login', async (req, res, next) => {
 
     try {
         const user = await getUserByUsername(username);
-        const hashedPassword = user.password;
 
-        if (user && await bcrypt.compare(password, hashedPassword)) {
+        if (user && await bcrypt.compare(password, user.password)) {
             const token = jwt.sign({
                 id: user.id,
                 username

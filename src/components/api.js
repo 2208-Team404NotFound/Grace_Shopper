@@ -1,4 +1,4 @@
-const BASE_URL = 'http://localhost:4000/api';
+const BASE_URL = 'http://localhost:5000/api';
 
 export const login = async (username, password, setToken, setLogin, setUser) => {
     let returnMessage;
