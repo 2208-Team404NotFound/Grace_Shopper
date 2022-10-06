@@ -37,7 +37,7 @@ const getUser = async ({ username, password }) => {
     }
 };
 
-const getUserByUsername = async ({ username, password }) => {
+const getUserByUsername = async (username) => {
     try {
         const { rows: [user] } = await client.query(`
         SELECT * FROM users
@@ -47,6 +47,8 @@ const getUserByUsername = async ({ username, password }) => {
         if (!user) {
             return null;
         }
+
+        return user;
     } catch (error) {
         throw error;
     }
