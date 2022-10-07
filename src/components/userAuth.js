@@ -9,24 +9,14 @@ export const Auth = ({ setToken }) => {
         event.preventDefault();
 
         const result = await login(username, password)
+        console.log(result)
         if (!result) {
             alert('Oops, incorrect username or password!')
             return;
         }
-        setToken(results);
-        localStorage.setItem('markgeeharrison', `${results}`);
-    };
-
-    const submitRegister = async (event) => {
-        event.preventDefault();
-        if (password.length < 8) {
-            alert('Password must be atleast 8 characters!')
-            return;
-        }
-
-        const results = await register(username, password);
-        setToken(results);
-        localStorage.setItem('markgeeharrison', `${results}`);
+        alert('You are logged in!')
+        setToken(result);
+        localStorage.setItem('markgeeharrison', `${result}`);
     };
 
     const submitLogout = (event) => {
@@ -42,7 +32,7 @@ export const Auth = ({ setToken }) => {
                 <input required type="text" placeholder="Username " value={username} onChange={(event) => {
                     setUsername(event.target.value)
                 }} />
-                <input required type="password" placeholder="Password " value={password} onChange={(event) => {
+                <input required minLength='8' type="password" placeholder="Password " value={password} onChange={(event) => {
                     setPassword(event.target.value)
                 }} />
                 <button onClick={(event) => submitLogin(event)}>Login</button>
