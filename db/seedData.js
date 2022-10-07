@@ -69,7 +69,8 @@ const createInitialUsers = async () => {
             { username: 'markymark', password: 'shithead123' },
             { username: 'GrungeElFz', password: 'password' },
             { username: 'HarrisonBurner', password: 'password123' },
-            { username: 'aaawww', password: '123123123' }
+            { username: 'aaawww', password: '123123123' },
+            { username: 'lucy', password: '12341234' }
         ];
 
         const users = await Promise.all(usersToCreate.map(createUser));

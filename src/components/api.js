@@ -1,6 +1,6 @@
 const BASE_URL = 'http://localhost:5000/api';
 
-export const login = async (username, password) => {
+export const loginUser = async (username, password) => {
 
     try {
         const response = await fetch(`${BASE_URL}/users/login`, {
@@ -21,7 +21,7 @@ export const login = async (username, password) => {
     }
 };
 
-export const register = async (username, password) => {
+export const registerUser = async (username, password) => {
     const response = await fetch(`${BASE_URL}/users/register`, {
         method: 'POST',
         headers: {

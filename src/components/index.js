@@ -1,3 +1,5 @@
-import { Auth } from './userAuth.js'
+import { Login } from './Login.js';
+import { Register } from './Register.js';
 
-export { Auth }
+
+export { Login, Register };
