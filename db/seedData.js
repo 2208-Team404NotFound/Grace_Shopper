@@ -1,5 +1,5 @@
 const client = require('./client');
-const { getUser, createUser, getUserById } = require('./users');
+const { getUser, createUser, getUserById, getUserByUsername } = require('./users');
 
 const dropTables = async () => {
     try {
@@ -68,7 +68,8 @@ const createInitialUsers = async () => {
         const usersToCreate = [
             { username: 'markymark', password: 'shithead123' },
             { username: 'GrungeElFz', password: 'password' },
-            { username: 'HarrisonBurner', password: 'password123' }
+            { username: 'HarrisonBurner', password: 'password123' },
+            { username: 'aaawww', password: '123123123' }
         ];
 
         const users = await Promise.all(usersToCreate.map(createUser));
@@ -92,7 +93,7 @@ const rebuildDB = async () => {
 
 const testDB = async () => {
     console.log('Starting to test database...');
-    const results = await getUserById(1);
+    const results = await getUser({ username: 'aaawww', password: '123123123' });
     console.log(results);
     console.log('Finished testing!');
 }

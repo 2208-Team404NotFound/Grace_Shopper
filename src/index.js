@@ -21,11 +21,13 @@ const App = () => {
             <div id='container'>
                 <div id='nav'>
                     <h1>The Cassette Shop</h1>
-                    <Link to="Login">Login</Link>
+                    <Link to="Login">Login </Link>
+                    <Link to="Register"> Register </Link>
                 </div>
                 <div id='main'>
                     <Routes>
                         <Route path="Login" element={<Auth setToken={setToken} />} />
+                        <Route path="Register" element={<Auth token={token} />} />
                     </Routes>
                 </div>
             </div>

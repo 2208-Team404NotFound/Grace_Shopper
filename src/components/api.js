@@ -1,8 +1,6 @@
 const BASE_URL = 'http://localhost:5000/api';
 
-export const login = async (username, password, setToken, setLogin, setUser) => {
-    let returnMessage;
-    let success;
+export const login = async (username, password) => {
 
     try {
         const response = await fetch(`${BASE_URL}/users/login`, {
@@ -16,22 +14,7 @@ export const login = async (username, password, setToken, setLogin, setUser) => 
             })
         });
         const results = await response.json();
-
-        if (!results.error) {
-            setToken(results.token)
-            setLogin(true)
-            setUser(username)
-            localStorage.setItem('markgeeharrison', results.token)
-            localStorage.setItem('markgeeharrison', username)
-            success = true
-            returnMessage = results.message
-        } else {
-            success = false
-            returnMessage = results.message
-        }
-
-        alert(returnMessage);
-        return success;
+        return results.token;
 
     } catch (error) {
         console.log(error);
@@ -52,4 +35,3 @@ export const register = async (username, password) => {
     const results = await response.json();
     return results.token;
 };
-
