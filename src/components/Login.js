@@ -1,28 +1,31 @@
-import { login, register } from './api';
+import { loginUser } from './api';
 import { useState } from 'react';
 
-export const Auth = ({ setToken }) => {
+export const Login = ({ setToken }) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
     const submitLogin = async (event) => {
         event.preventDefault();
 
-        const result = await login(username, password)
+        const result = await loginUser(username, password)
         console.log(result)
         if (!result) {
             alert('Oops, incorrect username or password!')
+            setUsername('')
+            setPassword('')
             return;
         }
         alert('You are logged in!')
         setToken(result);
+        setUsername('')
+        setPassword('')
         localStorage.setItem('markgeeharrison', `${result}`);
     };
 
     const submitLogout = (event) => {
         event.preventDefault();
-
-        setToken('');
+        setToken('')
         localStorage.removeItem('markgeeharrison');
     };
 

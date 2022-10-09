@@ -1,6 +1,6 @@
 import { createRoot } from 'react-dom/client';
 import { useEffect, useState } from 'react';
-import { Auth } from "./components"
+import { Login, Register } from './components'
 import { BrowserRouter, Route, Link, Routes } from 'react-router-dom'
 
 const App = () => {
@@ -26,8 +26,8 @@ const App = () => {
                 </div>
                 <div id='main'>
                     <Routes>
-                        <Route path="Login" element={<Auth setToken={setToken} />} />
-                        <Route path="Register" element={<Auth token={token} />} />
+                        <Route path="Login" element={<Login setToken={setToken} />} />
+                        <Route path="Register" element={<Register token={token} />} />
                     </Routes>
                 </div>
             </div>

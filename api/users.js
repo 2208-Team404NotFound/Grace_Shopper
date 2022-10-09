@@ -71,7 +71,7 @@ usersRouter.post('/register', async (req, res, next) => {
 
         const user = await createUser({
             username,
-            password,
+            password
         });
 
         const token = jwt.sign({
@@ -84,7 +84,7 @@ usersRouter.post('/register', async (req, res, next) => {
         delete user.password;
 
         res.send({
-            message: 'thank you for signing up',
+            message: 'Thank you for signing up!',
             token,
             user
         });
