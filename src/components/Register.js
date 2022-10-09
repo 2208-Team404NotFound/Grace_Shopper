@@ -6,6 +6,17 @@ export const Register = ({ setToken }) => {
     const [password, setPassword] = useState('');
     const [passwordConf, setPasswordConf] = useState('');
 
+    const handleUsername = (event) => {
+        setUsername(event.target.value);
+    };
+
+    const handlePassword = (event) => {
+        setPassword(event.target.value);
+    }
+
+    const handlePasswordConf = (event) => {
+        setPasswordConf(event.target.value);
+    }
     const submitRegister = async (event) => {
         event.preventDefault();
 
@@ -13,19 +24,26 @@ export const Register = ({ setToken }) => {
 
         if (user.username) {
             alert(`${user.username} already exists!`);
-
         } 
+
+        if (password !== passwordConf) {
+            alert('Incorrect password, please try again!');
+        }
+
+        setUsername('');
+        setPassword('');
+        setPasswordConf('');
+        localStorage.setItem('markgeeharrison', `${user}`); 
+        localStorage.setItem('username', username);
         alert('Registered successfully!');
-        setToken(result);
-        localStorage.setItem('markgeeharrison', `${result}`); 
     };
     return (
         <div>
-            <form id='register-form'>
-                <input required placeholder='Username' type='text' />
-                <input required placeholder='Password' minLength='8' type='password' />
-                <input required placeholder='Confirm Password' minLength='8' type='password' />
-                <button onClick={(event) => submitRegister(event)}>Register</button>
+            <form onSubmit={submitRegister} id='register-form'>
+                <input required placeholder='Username' type='text' value={username} onChange={handleUsername}/>
+                <input required placeholder='Password' min={8} type='password' value={password} onChange={handlePassword}/>
+                <input required placeholder='Confirm Password' min={8} type='password' value={passwordConf} onChange={handlePasswordConf}/>
+                <button type='submit' onClick={(event) => submitRegister(event)}>Register</button>
             </form>
         </div>
     )

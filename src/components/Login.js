@@ -12,17 +12,20 @@ export const Login = ({ setToken }) => {
         console.log(result)
         if (!result) {
             alert('Oops, incorrect username or password!')
+            setUsername('')
+            setPassword('')
             return;
         }
         alert('You are logged in!')
         setToken(result);
+        setUsername('')
+        setPassword('')
         localStorage.setItem('markgeeharrison', `${result}`);
     };
 
     const submitLogout = (event) => {
         event.preventDefault();
-
-        setToken('');
+        setToken('')
         localStorage.removeItem('markgeeharrison');
     };
 
