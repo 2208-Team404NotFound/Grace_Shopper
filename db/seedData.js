@@ -1,5 +1,6 @@
-const client = require('./client');
+; const client = require('./client');
 const { getUser, createUser, getUserById, getUserByUsername } = require('./users');
+const { createAlbums, getAllAlbums } = require('./albums');
 
 const dropTables = async () => {
     try {
@@ -8,9 +9,8 @@ const dropTables = async () => {
         await client.query(
             // DROP TABLE IF EXISTS orders;
             // DROP TABLE IF EXISTS shopping_cart;
-            // DROP TABLE IF EXISTS albums;
-            // DROP TABLE IF EXISTS artists;
             `
+        DROP TABLE IF EXISTS albums;
         DROP TABLE IF EXISTS users;
         `);
 
@@ -29,19 +29,19 @@ const createTables = async () => {
             id SERIAL PRIMARY KEY,
             username VARCHAR(255) UNIQUE NOT NULL,
             password VARCHAR(255) NOT NULL
-        ); `
+        ); 
 
+        CREATE TABLE albums (
+            id SERIAL PRIMARY KEY,
+            artist VARCHAR(50) NOT NULL,
+            album_name VARCHAR(50) UNIQUE NOT NULL,
+            album_price NUMERIC(5, 2),
+            year INT,
+            img_url TEXT
+        ); `
             // CREATE TABLE artists (
             //     id SERIAL PRIMARY KEY,
             //     name VARCHAR(50) UNIQUE NOT NULL
-            // );
-
-            // CREATE TABLE albums (
-            //     id SERIAL PRIMARY KEY,
-            //     artist_name VARCHAR(50) UNIQUE NOT NULL
-            //     album_name VARCHAR(50) NOT NULL,
-            //     album_price NUMERIC(5, 2),
-            //     year INT
             // );
 
             // CREATE TABLE shopping_cart (
@@ -79,13 +79,30 @@ const createInitialUsers = async () => {
     } catch (error) {
         console.log(`Error creating users: ${error}`);
     }
-}
+};
+
+const createInitialAlbums = async () => {
+    try {
+        console.log('Starting to create albums...')
+
+        const albumsToCreate = [
+            { artist: 'Drake', album_name: 'Thank Me Later', year: 2010, album_price: 20.99, img_url: 'thankjpg.jpg' }
+        ];
+
+        const albums = await Promise.all(albumsToCreate.map(createAlbums));
+
+        console.log(`Albums created: ${albums}`)
+    } catch (error) {
+        console.log(`Error creating albums: ${error}`)
+    }
+};
 
 const rebuildDB = async () => {
     try {
         await dropTables();
         await createTables();
         await createInitialUsers();
+        await createInitialAlbums();
         await testDB();
     } catch (error) {
         console.log(`Error during rebuildDB: ${error}`);
@@ -94,7 +111,7 @@ const rebuildDB = async () => {
 
 const testDB = async () => {
     console.log('Starting to test database...');
-    const results = await getUser({ username: 'aaawww', password: '123123123' });
+    const results = await getAllAlbums({ artist: 'Drake' });
     console.log(results);
     console.log('Finished testing!');
 }
