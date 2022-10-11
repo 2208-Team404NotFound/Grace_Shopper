@@ -1,4 +1,4 @@
-; const client = require('./client');
+const client = require('./client');
 const { getUser, createUser, getUserById, getUserByUsername } = require('./users');
 const { createAlbums, getAllAlbums } = require('./albums');
 

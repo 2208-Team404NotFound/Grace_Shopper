@@ -1,4 +1,4 @@
-const BASE_URL = 'http://localhost:5000/api';
+const BASE_URL = 'http://localhost:5000/api'
 
 export const loginUser = async (username, password) => {
 
@@ -60,16 +60,3 @@ export const createAlbums = async (token, artist, albumName, year, price) => {
     const results = await response.json();
     return results;
 };
-
-// export const editAlbum = async (token, id, updateFields) => {
-//     const response = await fetch(`${BASE_URL}/albums/${id}`, {
-//         method: 'PATCH',
-//         headers: {
-//             'Content-Type': 'application/json',
-//             'Authorization': `Bearer ${token}`
-//         },
-//         body: JSON.stringify(updateFields)
-//     });
-//     const results = await response.json();
-//     return results;
-// }
