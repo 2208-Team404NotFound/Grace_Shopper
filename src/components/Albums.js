@@ -7,7 +7,7 @@ export const Albums = ({ token }) => {
     const [album_name, setAlbumName] = useState('');
     const [year, setYear] = useState('');
     const [album_price, setPrice] = useState('');
-    const [img_url, setImgUrl] = useState('')
+    const [img_url, setImgUrl] = useState('');
 
     useEffect(() => {
         getAllAlbums()
@@ -21,7 +21,7 @@ export const Albums = ({ token }) => {
     };
 
     return (
-        <div>
+        <div className='albums-container'>
             <form id='albums-form'>
                 <input placeholder='Artist' onChange={event => setArtist(event.target.value)} />
                 <input placeholder='Album Name' onChange={event => setAlbumName(event.target.value)} />
