@@ -6,10 +6,10 @@ const dropTables = async () => {
     try {
         console.log('Dropping all tables!');
 
-        await client.query(
-            // DROP TABLE IF EXISTS orders;
-            // DROP TABLE IF EXISTS shopping_cart;
-            `
+        await client.query(`
+        DROP TABLE IF EXISTS orders_albums;
+        DROP TABLE IF EXISTS orders;
+        DROP TABLE IF EXISTS artists;
         DROP TABLE IF EXISTS albums;
         DROP TABLE IF EXISTS users;
         `);
@@ -38,24 +38,29 @@ const createTables = async () => {
             album_price NUMERIC(5, 2),
             year INT,
             img_url TEXT
-        ); `
-            // CREATE TABLE artists (
-            //     id SERIAL PRIMARY KEY,
-            //     name VARCHAR(50) UNIQUE NOT NULL
-            // );
-
-            // CREATE TABLE shopping_cart (
-            //     id SERIAL PRIMARY KEY,
-            //     order_id INT UNIQUE NOT NULL,
-            //     album_id INT NOT NULL,
-            //     quantity INT NOT NULL
-            // );
-
-            // CREATE TABLE orders (
-            //     user_id INT UNIQUE NOT NULL 
-            // );
         );
 
+        CREATE TABLE artists (
+            id SERIAL PRIMARY KEY,
+            name VARCHAR(50) UNIQUE NOT NULL,
+            album_id INT REFERENCES albums(id)
+        );
+
+        CREATE TABLE orders (
+            id SERIAL PRIMARY KEY,
+            user_id INT REFERENCES users(id),
+            price INT,
+            is_active BOOLEAN DEFAULT false
+        );
+
+        CREATE TABLE orders_albums (
+            id SERIAL PRIMARY KEY,
+            order_id INT REFERENCES albums(id) NOT NULL,
+            album_id INT REFERENCES orders(id) NOT NULL,
+            quantity INT NOT NULL
+        ); `
+
+        );
     } catch (error) {
         console.log(`Error building tables: ${error}`);
     }
