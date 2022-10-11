@@ -48,7 +48,7 @@ const createTables = async () => {
 
         CREATE TABLE orders (
             id SERIAL PRIMARY KEY,
-            user_id INT REFERNECES users(id),
+            user_id INT REFERENCES users(id),
             price INT,
             is_active BOOLEAN DEFAULT false
         );
