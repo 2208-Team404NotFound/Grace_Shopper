@@ -30,7 +30,7 @@ export const Login = ({ setToken }) => {
     };
 
     return (
-        <div>
+        <div className='login-container'>
             <form id='login-form'>
                 <input required type="text" placeholder="Username " value={username} onChange={(event) => {
                     setUsername(event.target.value)

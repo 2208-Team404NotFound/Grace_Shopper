@@ -1,5 +1,6 @@
 const client = require('./client');
 const { getUser, createUser, getUserById, getUserByUsername } = require('./users');
+const { createAlbums, getAllAlbums } = require('./albums');
 
 const dropTables = async () => {
     try {
@@ -8,9 +9,8 @@ const dropTables = async () => {
         await client.query(
             // DROP TABLE IF EXISTS orders;
             // DROP TABLE IF EXISTS shopping_cart;
-            // DROP TABLE IF EXISTS albums;
-            // DROP TABLE IF EXISTS artists;
             `
+        DROP TABLE IF EXISTS albums;
         DROP TABLE IF EXISTS users;
         `);
 
@@ -29,19 +29,19 @@ const createTables = async () => {
             id SERIAL PRIMARY KEY,
             username VARCHAR(255) UNIQUE NOT NULL,
             password VARCHAR(255) NOT NULL
-        ); `
+        ); 
 
+        CREATE TABLE albums (
+            id SERIAL PRIMARY KEY,
+            artist VARCHAR(50) NOT NULL,
+            album_name VARCHAR(50) UNIQUE NOT NULL,
+            album_price NUMERIC(5, 2),
+            year INT,
+            img_url TEXT
+        ); `
             // CREATE TABLE artists (
             //     id SERIAL PRIMARY KEY,
             //     name VARCHAR(50) UNIQUE NOT NULL
-            // );
-
-            // CREATE TABLE albums (
-            //     id SERIAL PRIMARY KEY,
-            //     artist_name VARCHAR(50) UNIQUE NOT NULL
-            //     album_name VARCHAR(50) NOT NULL,
-            //     album_price NUMERIC(5, 2),
-            //     year INT
             // );
 
             // CREATE TABLE shopping_cart (
@@ -79,13 +79,31 @@ const createInitialUsers = async () => {
     } catch (error) {
         console.log(`Error creating users: ${error}`);
     }
-}
+};
+
+const createInitialAlbums = async () => {
+    try {
+        console.log('Starting to create albums...')
+
+        const albumsToCreate = [
+            { artist: 'Drake', album_name: 'Thank Me Later', year: 2010, album_price: 20.99, img_url: 'https://th.bing.com/th/id/R.7a00b670def11cba0119f66a6aaca536?rik=vbcE7R0Nv6%2fv7Q&riu=http%3a%2f%2fhiphop-n-more.com%2fwp-content%2fuploads%2f2010%2f05%2fTML.jpg&ehk=m3bKEgW2XPnF9ZZX3Dgkr1kc%2f752FrXMxSujxZuc%2bvY%3d&risl=&pid=ImgRaw&r=0' },
+            { artist: 'Lil Wayne', album_name: 'The Carter III', year: 2008, album_price: 15.99, img_url: 'https://th.bing.com/th/id/R.72d58a665fe295467c98d42150b98ee1?rik=RsIJgv66mUslYw&riu=http%3a%2f%2f1.bp.blogspot.com%2f_5arDEEcMkEU%2fSGKnKLHCCeI%2fAAAAAAAAAA4%2fTvUs9sPnZtQ%2fs1600%2f00%2b-%2bLil%2bWayne%2b-%2bThe%2bCarter%2bIII%2b%252528Front%252529.jpg&ehk=tchruh6GChgzLhK91emlPMYOLTKkVFKsM5yjiz%2f4Zkg%3d&risl=&pid=ImgRaw&r=0' }
+        ];
+
+        const albums = await Promise.all(albumsToCreate.map(createAlbums));
+
+        console.log(`Albums created: ${albums}`)
+    } catch (error) {
+        console.log(`Error creating albums: ${error}`)
+    }
+};
 
 const rebuildDB = async () => {
     try {
         await dropTables();
         await createTables();
         await createInitialUsers();
+        await createInitialAlbums();
         await testDB();
     } catch (error) {
         console.log(`Error during rebuildDB: ${error}`);
@@ -94,7 +112,7 @@ const rebuildDB = async () => {
 
 const testDB = async () => {
     console.log('Starting to test database...');
-    const results = await getUser({ username: 'aaawww', password: '123123123' });
+    const results = await getAllAlbums({ artist: 'Drake' });
     console.log(results);
     console.log('Finished testing!');
 }

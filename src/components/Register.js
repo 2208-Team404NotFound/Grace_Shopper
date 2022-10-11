@@ -24,7 +24,7 @@ export const Register = ({ setToken }) => {
 
         if (user.username) {
             alert(`${user.username} already exists!`);
-        } 
+        }
 
         if (password !== passwordConf) {
             alert('Incorrect password, please try again!');
@@ -33,16 +33,16 @@ export const Register = ({ setToken }) => {
         setUsername('');
         setPassword('');
         setPasswordConf('');
-        localStorage.setItem('markgeeharrison', `${user}`); 
+        localStorage.setItem('markgeeharrison', `${user}`);
         localStorage.setItem('username', username);
         alert('Registered successfully!');
     };
     return (
-        <div>
+        <div className='register-container'>
             <form onSubmit={submitRegister} id='register-form'>
-                <input required placeholder='Username' type='text' value={username} onChange={handleUsername}/>
-                <input required placeholder='Password' min={8} type='password' value={password} onChange={handlePassword}/>
-                <input required placeholder='Confirm Password' min={8} type='password' value={passwordConf} onChange={handlePasswordConf}/>
+                <input required placeholder='Username' type='text' value={username} onChange={handleUsername} />
+                <input required placeholder='Password' min={8} type='password' value={password} onChange={handlePassword} />
+                <input required placeholder='Confirm Password' min={8} type='password' value={passwordConf} onChange={handlePasswordConf} />
                 <button type='submit' onClick={(event) => submitRegister(event)}>Register</button>
             </form>
         </div>

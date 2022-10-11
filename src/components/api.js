@@ -1,4 +1,4 @@
-const BASE_URL = 'http://localhost:5000/api';
+const BASE_URL = 'http://localhost:5000/api'
 
 export const loginUser = async (username, password) => {
 
@@ -34,4 +34,29 @@ export const registerUser = async (username, password) => {
     });
     const results = await response.json();
     return results.token;
+};
+
+export const getAllAlbums = async () => {
+    const response = await fetch(`${BASE_URL}/albums`, {
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    const results = await response.json();
+    return results;
+};
+
+export const createAlbums = async (token, artist, albumName, year, price) => {
+    const response = await fetch(`${BASE_URL}/albums`, {
+        method: 'POST',
+        header: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify({
+            artist, albumName, year, price
+        })
+    });
+    const results = await response.json();
+    return results;
 };

@@ -41,6 +41,9 @@ router.use((req, res, next) => {
 const usersRouter = require('./users');
 router.use('/users', usersRouter);
 
+const albumsRouter = require('./albums');
+router.use('/albums', albumsRouter);
+
 router.use((error, req, res) => {
     res.send({
         name: error.name,
