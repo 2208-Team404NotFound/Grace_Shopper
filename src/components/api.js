@@ -38,23 +38,38 @@ export const registerUser = async (username, password) => {
 
 export const getAllAlbums = async () => {
     const response = await fetch(`${BASE_URL}/albums`, {
-        'Content-Type': 'application/json'
+        headers: {
+            'Content-Type': 'application/json'
+        }
     })
     const results = await response.json();
     return results;
 };
 
-export const createAlbums = async (token, artist, album_name, year, album_price, img_url) => {
-    const response = await fetch(`${BASE_URL}/Albums`, {
+export const createAlbums = async (token, artist, albumName, year, price) => {
+    const response = await fetch(`${BASE_URL}/albums`, {
         method: 'POST',
         header: {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${token}`
         },
         body: JSON.stringify({
-            artist, album_name, year, album_price, img_url
+            artist, albumName, year, price
         })
     });
     const results = await response.json();
     return results;
 };
+
+// export const editAlbum = async (token, id, updateFields) => {
+//     const response = await fetch(`${BASE_URL}/albums/${id}`, {
+//         method: 'PATCH',
+//         headers: {
+//             'Content-Type': 'application/json',
+//             'Authorization': `Bearer ${token}`
+//         },
+//         body: JSON.stringify(updateFields)
+//     });
+//     const results = await response.json();
+//     return results;
+// }

@@ -28,10 +28,10 @@ albumsRouter.post('/', async (req, res) => {
                 message: `${album_name} already exists, please be more creative`,
                 name: 'Album Exists Error'
             });
-        } else {
-            const newAlbum = await createAlbums({ artist, album_name, year, album_price, img_url });
-            res.send(newAlbum);
-        }
+        };
+        const newAlbum = await createAlbums({ artist, album_name, year, album_price, img_url });
+        res.send(newAlbum);
+
 
     } catch (error) {
         throw error;
@@ -61,13 +61,14 @@ albumsRouter.patch('/:album_id', async (req, res) => {
     }
 
     try {
-        if (!(await getAlbumsById(album_id))) {
-            res.send({
-                message: 'Album not found',
-                name: 'Album not found error'
-            });
+        // if (!(await getAlbumsById(album_id))) {
+        //     res.send({
+        //         message: 'Album not found',
+        //         name: 'Album not found error'
+        //     });
 
-        } else if (await getAlbumsByName(album_name)) {
+        // } else 
+        if (await getAlbumsByName(album_name)) {
             res.send({
                 message: `${album_name} already exists, please be more creative`,
                 name: 'Album Exists Error'

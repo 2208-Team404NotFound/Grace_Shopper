@@ -86,7 +86,8 @@ const createInitialAlbums = async () => {
         console.log('Starting to create albums...')
 
         const albumsToCreate = [
-            { artist: 'Drake', album_name: 'Thank Me Later', year: 2010, album_price: 20.99, img_url: 'thankjpg.jpg' }
+            { artist: 'Drake', album_name: 'Thank Me Later', year: 2010, album_price: 20.99, img_url: 'https://th.bing.com/th/id/R.7a00b670def11cba0119f66a6aaca536?rik=vbcE7R0Nv6%2fv7Q&riu=http%3a%2f%2fhiphop-n-more.com%2fwp-content%2fuploads%2f2010%2f05%2fTML.jpg&ehk=m3bKEgW2XPnF9ZZX3Dgkr1kc%2f752FrXMxSujxZuc%2bvY%3d&risl=&pid=ImgRaw&r=0' },
+            { artist: 'Lil Wayne', album_name: 'The Carter III', year: 2008, album_price: 15.99, img_url: 'https://th.bing.com/th/id/R.72d58a665fe295467c98d42150b98ee1?rik=RsIJgv66mUslYw&riu=http%3a%2f%2f1.bp.blogspot.com%2f_5arDEEcMkEU%2fSGKnKLHCCeI%2fAAAAAAAAAA4%2fTvUs9sPnZtQ%2fs1600%2f00%2b-%2bLil%2bWayne%2b-%2bThe%2bCarter%2bIII%2b%252528Front%252529.jpg&ehk=tchruh6GChgzLhK91emlPMYOLTKkVFKsM5yjiz%2f4Zkg%3d&risl=&pid=ImgRaw&r=0' }
         ];
 
         const albums = await Promise.all(albumsToCreate.map(createAlbums));
