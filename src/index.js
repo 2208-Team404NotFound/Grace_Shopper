@@ -22,10 +22,13 @@ const App = () => {
 
                 <header>
                     <h1 id='logo'>The Cassette Shop</h1>
+                </header>
+                
+                <nav>
                     <Link to="Login"> Login </Link>
                     <Link to="Register"> Register </Link>
                     <Link to="Albums"> Albums </Link>
-                </header>
+                </nav>
 
                 <main>
                     <Routes>
