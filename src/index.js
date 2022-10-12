@@ -18,17 +18,19 @@ const App = () => {
 
     return (
         <BrowserRouter>
-            <div>
+            <>
+            
+                <div className='header-container'>
+                    <header>
+                        <h1 id='logo'>The Cassette Shop</h1>
+                    </header>
 
-                <header>
-                    <h1 id='logo'>The Cassette Shop</h1>
-                </header>
-                
-                <nav>
-                    <Link to="Login"> Login </Link>
-                    <Link to="Register"> Register </Link>
-                    <Link to="Albums"> Albums </Link>
-                </nav>
+                    <nav>
+                        <Link to="Login"> Login </Link>
+                        <Link to="Register"> Register </Link>
+                        <Link to="Albums"> Albums </Link>
+                    </nav>
+                </div>
 
                 <main>
                     <Routes>
@@ -38,7 +40,7 @@ const App = () => {
                     </Routes>
                 </main>
 
-            </div>
+            </>
         </BrowserRouter>
     );
 }
