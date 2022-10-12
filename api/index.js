@@ -44,8 +44,8 @@ router.use('/users', usersRouter);
 const albumsRouter = require('./albums');
 router.use('/albums', albumsRouter);
 
-const ordersRouter = require('./orders');
-router.use('/orders', ordersRouter);
+// const ordersRouter = require('./orders');
+// router.use('/orders', ordersRouter);
 
 router.use((error, req, res) => {
     res.send({
