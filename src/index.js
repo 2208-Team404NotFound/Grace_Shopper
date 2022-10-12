@@ -18,20 +18,23 @@ const App = () => {
 
     return (
         <BrowserRouter>
-            <div id='container'>
-                <div id='nav'>
+            <div>
+
+                <header>
                     <h1>The Cassette Shop</h1>
                     <Link to="Login"> Login </Link>
                     <Link to="Register"> Register </Link>
                     <Link to="Albums"> Albums </Link>
-                </div>
-                <div id='main'>
+                </header>
+
+                <main>
                     <Routes>
                         <Route path="Login" element={<Login setToken={setToken} />} />
                         <Route path="Register" element={<Register />} />
                         <Route path="Albums" element={<Albums token={token} />} />
                     </Routes>
-                </div>
+                </main>
+
             </div>
         </BrowserRouter>
     );
