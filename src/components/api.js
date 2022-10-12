@@ -41,7 +41,7 @@ export const getAllAlbums = async () => {
         headers: {
             'Content-Type': 'application/json'
         }
-    })
+    });
     const results = await response.json();
     return results;
 };
@@ -55,6 +55,30 @@ export const createAlbums = async (token, artist, albumName, year, price) => {
         },
         body: JSON.stringify({
             artist, albumName, year, price
+        })
+    });
+    const results = await response.json();
+    return results;
+};
+
+export const getAllOrders = async (user_id, is_active, price) => {
+    const response = await fetch(`${BASE_URL}/orders`, {
+        headers: {
+            'Content-Type': 'application/json'
+        },
+    });
+    const results = await response.json();
+    return results;
+};
+
+export const createOrders = async (token, user_id, is_active, price) => {
+    const response =  await fetch(`${BASE_URL}/orders`, {
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify({
+           user_id, is_active, price 
         })
     });
     const results = await response.json();

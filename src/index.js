@@ -25,6 +25,7 @@ const App = () => {
                     <Link to="Login"> Login </Link>
                     <Link to="Register"> Register </Link>
                     <Link to="Albums"> Albums </Link>
+                    <Link to="Orders"> Cart </Link>
                 </header>
 
                 <main>
