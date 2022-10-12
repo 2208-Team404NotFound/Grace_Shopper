@@ -21,7 +21,7 @@ const App = () => {
             <div>
 
                 <header>
-                    <h1>The Cassette Shop</h1>
+                    <h1 id='logo'>The Cassette Shop</h1>
                     <Link to="Login"> Login </Link>
                     <Link to="Register"> Register </Link>
                     <Link to="Albums"> Albums </Link>
