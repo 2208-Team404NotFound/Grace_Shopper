@@ -44,6 +44,9 @@ router.use('/users', usersRouter);
 const albumsRouter = require('./albums');
 router.use('/albums', albumsRouter);
 
+const checkoutRouter = require('./checkout');
+router.use('/checkout', checkoutRouter);
+
 router.use((error, req, res) => {
     res.send({
         name: error.name,
