@@ -38,6 +38,21 @@ const getAlbumsByName = async (album_name) => {
     }
 };
 
+const getAlbumsByOrderId = async (order_id) => {
+    try {
+        const { rows: [album] } = client.query(`
+        SELECT albums.*, orders_albums.price AS cart_price, orders_albums.id AS cart_album_id, orders_albums.quantity FROM albums
+        JOIN orders_albums
+        ON albums.id = orders_albums.albums_id
+        WHERE order_id=$1;
+        `, [order_id])
+
+        return album;
+    } catch (error) {
+        throw error;
+    }
+}
+
 const createAlbums = async ({ artist, album_name, year, album_price, img_url }) => {
     try {
         const { rows: [album] } = await client.query(`
@@ -73,12 +88,13 @@ const updateAlbums = async ({ id, ...fields }) => {
     } catch (error) {
         throw error;
     }
-}
+};
 
 module.exports = {
     getAllAlbums,
     getAlbumsById,
     getAlbumsByName,
+    getAlbumsByOrderId,
     createAlbums,
     updateAlbums
 }
