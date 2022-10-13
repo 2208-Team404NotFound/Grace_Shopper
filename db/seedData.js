@@ -1,6 +1,7 @@
 const client = require('./client');
 const { getUser, createUser, getUserById, getUserByUsername } = require('./users');
 const { createAlbums, getAllAlbums } = require('./albums');
+const { createOrders, getAllOrders } = require('./orders');
 
 const dropTables = async () => {
     try {
@@ -49,7 +50,7 @@ const createTables = async () => {
         CREATE TABLE orders (
             id SERIAL PRIMARY KEY,
             user_id INT REFERENCES users(id),
-            price INT,
+            price NUMERIC(5, 2),
             is_active BOOLEAN DEFAULT false
         );
 
@@ -88,7 +89,7 @@ const createInitialUsers = async () => {
 
 const createInitialAlbums = async () => {
     try {
-        console.log('Starting to create albums...')
+        console.log('Starting to create albums...');
 
         const albumsToCreate = [
             { artist: 'Drake', album_name: 'Thank Me Later', year: 2010, album_price: 20.99, img_url: 'https://th.bing.com/th/id/R.7a00b670def11cba0119f66a6aaca536?rik=vbcE7R0Nv6%2fv7Q&riu=http%3a%2f%2fhiphop-n-more.com%2fwp-content%2fuploads%2f2010%2f05%2fTML.jpg&ehk=m3bKEgW2XPnF9ZZX3Dgkr1kc%2f752FrXMxSujxZuc%2bvY%3d&risl=&pid=ImgRaw&r=0' },
@@ -109,12 +110,29 @@ const createInitialAlbums = async () => {
     }
 };
 
+const createInitialOrders = async () => {
+    try {
+        console.log('Starting to create orders...');
+
+        const ordersToCreate = [
+            { user_id: 1, price: 9.99, is_active: false }
+        ];
+
+        const orders = await Promise.all(ordersToCreate.map(createOrders));
+
+        console.log(`Orders created: ${orders}`);
+    } catch (error) {
+        console.log(`Error creating orders ${error}`)
+    }
+};
+
 const rebuildDB = async () => {
     try {
         await dropTables();
         await createTables();
         await createInitialUsers();
         await createInitialAlbums();
+        await createInitialOrders();
         await testDB();
     } catch (error) {
         console.log(`Error during rebuildDB: ${error}`);
@@ -123,7 +141,7 @@ const rebuildDB = async () => {
 
 const testDB = async () => {
     console.log('Starting to test database...');
-    const results = await getAllAlbums({ artist: 'Drake' });
+    const results = await getAllOrders(1);
     console.log(results);
     console.log('Finished testing!');
 }
