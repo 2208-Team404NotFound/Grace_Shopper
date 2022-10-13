@@ -60,3 +60,14 @@ export const createAlbums = async (token, artist, albumName, year, price) => {
     const results = await response.json();
     return results;
 };
+
+export const getAllOrders = async (user_id, price, is_active) => {
+    const response = await fetch(`${BASE_URL}/orders/${user_id}`, {
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    const results = await response.json();
+    return results;
+};
+
