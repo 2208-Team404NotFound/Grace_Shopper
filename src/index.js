@@ -18,15 +18,14 @@ const App = () => {
 
     return (
         <BrowserRouter>
-            <>
+            <div>
 
                 <header>
                     <h1 id='logo'>The Cassette Shop</h1>
-                    <nav>
-                        <Link to="Login"> Login </Link>
-                        <Link to="Register"> Register </Link>
-                        <Link to="Albums"> Albums </Link>
-                    </nav>
+                    <Link to="Login"> Login </Link>
+                    <Link to="Register"> Register </Link>
+                    <Link to="Albums"> Albums </Link>
+                    <Link to="Orders"> Cart </Link>
                 </header>
 
                 <main>
@@ -37,7 +36,7 @@ const App = () => {
                     </Routes>
                 </main>
 
-            </>
+            </div>
         </BrowserRouter>
     );
 }
