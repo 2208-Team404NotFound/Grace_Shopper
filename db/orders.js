@@ -98,7 +98,7 @@ const checkoutOrders = async (user_id) => {
         UPDATE orders
         SET is_active=true
         WHERE id=$1
-        RETURNING *
+        RETURNING *;
         `, [user_id]);
 
         return;
