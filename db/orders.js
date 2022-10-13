@@ -88,7 +88,22 @@ const destroyOrders = async (id) => {
     } catch (error) {
         throw error;
     }
-}
+};
+
+const checkoutOrders = async (user_id) => {
+    try {
+        await client.query(`
+        UPDATE orders
+        SET is_active=true
+        WHERE id=$1
+        RETURNING *
+        `, [user_id]);
+
+        return;
+    } catch (error) {
+
+    }
+};
 
 module.exports = {
     getAllOrders,
@@ -96,5 +111,6 @@ module.exports = {
     getOrdersById,
     getOrdersByUserId,
     updateOrders,
-    destroyOrders
+    destroyOrders,
+    checkoutOrders
 };
