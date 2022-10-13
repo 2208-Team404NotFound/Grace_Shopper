@@ -103,7 +103,7 @@ const checkoutOrders = async (user_id) => {
 
         return;
     } catch (error) {
-
+        throw error;
     }
 };
 
