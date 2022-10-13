@@ -41,6 +41,7 @@ export const Albums = ({ token }) => {
                                 <p className='album-artist'>{album.artist}</p>
                                 <p className='album-year'>{album.year}</p>
                                 <p className='album-price'>{album.album_price}</p>
+                                <button className='add-to-cart'>Add to Cart</button>
                             </div>
                         )
                     })}
