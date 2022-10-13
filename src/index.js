@@ -1,6 +1,6 @@
 import { createRoot } from 'react-dom/client';
 import { useEffect, useState } from 'react';
-import { Login, Register, Albums } from "./components"
+import { Login, Register, Albums, Orders } from "./components"
 import { BrowserRouter, Route, Link, Routes } from 'react-router-dom'
 
 const App = () => {
@@ -33,6 +33,7 @@ const App = () => {
                         <Route path="Login" element={<Login setToken={setToken} />} />
                         <Route path="Register" element={<Register />} />
                         <Route path="Albums" element={<Albums token={token} />} />
+                        <Route path="Orders" element={<Orders />} />
                     </Routes>
                 </main>
 

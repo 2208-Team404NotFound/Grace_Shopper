@@ -11,26 +11,27 @@ const {
 
 ordersRouter.get('/', async (req, res) => {
     try {
-        const allOrders = await getAllOrders();
-
-        res.send(allOrders);
+        if (!req.user) {
+            res.send('Error');
+            return;
+        }
+        const cart = await getAllOrders(req.user.id);
+        res.send({ cart })
     } catch (error) {
         throw error;
     }
 });
 
-ordersRouter.post('/', async (req, res) => {
+ordersRouter.post('/add-to-cart', async (req, res) => {
     const { user_id, price, is_active } = req.body;
 
     try {
-        if (await getAllOrders(user_id)) {
-            res.send({
-                message: 'Order already exists',
-                name: 'Order Exists Error'
-            });
-        };
-        const newOrder = await createOrders({ user_id, price, is_active });
-        res.send(newOrder);
+        if (!req.user) {
+            res.send('Error');
+            return;
+        }
+        const item = await updateOrders(req.body);
+        res.send(item);
 
     } catch (error) {
         throw error;
