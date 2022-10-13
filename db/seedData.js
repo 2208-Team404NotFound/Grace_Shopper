@@ -120,11 +120,11 @@ const createInitialOrders = async () => {
 
         const orders = await Promise.all(ordersToCreate.map(createOrders));
 
-        console.log('Orders created!');
+        console.log(`Orders created: ${orders}`);
     } catch (error) {
         console.log(`Error creating orders ${error}`)
     }
-}
+};
 
 const rebuildDB = async () => {
     try {
@@ -141,7 +141,7 @@ const rebuildDB = async () => {
 
 const testDB = async () => {
     console.log('Starting to test database...');
-    const results = await getAllAlbums({ artist: 'Drake' });
+    const results = await getAllOrders(1);
     console.log(results);
     console.log('Finished testing!');
 }

@@ -1,14 +1,16 @@
 const ordersRouter = require('../api')
 const client = require('./client')
+const { getAlbumsByOrderId } = require('./albums')
 
 const getAllOrders = async (user_id) => {
     try {
-        const { rows } = await client.query(`
-        SELECT * FROM orders;
+        const response = await client.query(`
+        SELECT * FROM orders
         WHERE user_id=$1;
         `, [user_id]);
 
-        return rows;
+        let orders = response.rows;
+        return orders;
     } catch (error) {
         throw error;
     }
@@ -17,10 +19,10 @@ const getAllOrders = async (user_id) => {
 const createOrders = async ({ user_id, price, is_active }) => {
     try {
         const { rows: [orders] } = await client.query(`
-        INSERT INTO orders (user_id, price, is_active)
-        VALUES ($1, $2, $3)
+        INSERT INTO orders (user_id)
+        VALUES ($1)
         RETURNING *;
-        `, [user_id, price, is_active]);
+        `, [user_id]);
 
         return orders;
     } catch (error) {
