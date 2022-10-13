@@ -1,13 +1,14 @@
 const ordersRouter = require('../api')
 const client = require('./client')
 
-const getAllOrders = async () => {
+const getAllOrders = async (user_id) => {
     try {
-        const { rows: orders } = await client.query(`
+        const { rows } = await client.query(`
         SELECT * FROM orders;
-        `);
+        WHERE user_id=$1;
+        `, [user_id]);
 
-        return orders;
+        return rows;
     } catch (error) {
         throw error;
     }
@@ -94,5 +95,6 @@ module.exports = {
     createOrders,
     getOrdersById,
     getOrdersByUserId,
-    updateOrders
+    updateOrders,
+    destroyOrders
 };
