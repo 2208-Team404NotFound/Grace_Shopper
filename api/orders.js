@@ -4,7 +4,9 @@ const {
     getAllOrders,
     createOrders,
     getOrdersById,
-    getOrdersByUserId
+    getOrdersByUserId,
+    updateOrders,
+    destroyOrders
 } = require('../db');
 
 ordersRouter.get('/', async (req, res) => {

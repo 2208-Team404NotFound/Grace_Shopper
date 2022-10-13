@@ -53,9 +53,46 @@ const getOrdersByUserId = async ({ user_id }) => {
     }
 };
 
+const updateOrders = async ({ id, ...fields }) => {
+
+    const setString = Object.keys(fields).map(
+        (key, index) => `"${key}"=$${index + 1}`
+    ).join(', ');
+
+    try {
+        if (setString.length > 0) {
+            const { rows: [orders] } = await client.query(`
+            UPDATE orders
+            SET ${setString}
+            WHERE id=${id}
+            RETURNING *;
+            `, Object.values(fields));
+
+            return orders;
+        } else return;
+    } catch (error) {
+        throw error;
+    }
+};
+
+const destroyOrders = async (id) => {
+    try {
+        await client.query(`
+        DELETE FROM orders
+        WHERE id=${id}
+        RETURNING *;
+        `);
+
+        return;
+    } catch (error) {
+        throw error;
+    }
+}
+
 module.exports = {
     getAllOrders,
     createOrders,
     getOrdersById,
-    getOrdersByUserId
+    getOrdersByUserId,
+    updateOrders
 };
