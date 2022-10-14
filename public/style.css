@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Cedarville+Cursive&display=swap');
+
+html {
+    background-image: url(background.png);
+}
+
 .album-cover {
     height: 250px;
     width: 250px;
@@ -60,26 +66,32 @@ main {
 }
 
 .album-grid {
-    border: 1px solid red;
+    border: 1px solid rgb(61, 110, 154);
+    background-color: white;
+    font-family: 'Cedarville Cursive', cursive;
 
     display: flex;
     flex-direction: column;
-    
-    margin: 10px;
+
+    margin: 30px;
 }
 
 .album-cover {
     margin: 1px;
 }
+
 .album-name {
     margin: 1px;
 }
+
 .album-artist {
     margin: 1px;
 }
+
 .album-year {
     margin: 1px;
 }
+
 .album-price {
     margin: 1px;
 }
