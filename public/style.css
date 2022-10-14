@@ -88,7 +88,8 @@ main {
     color: black;
 }
 
-/* ICON ANIMATION */
+
+/* ICON SPINNING ANIMATION */
 @-webkit-keyframes rotating {
     from {
       -webkit-transform: rotate(0deg);
@@ -124,3 +125,23 @@ main {
     -o-animation: rotating 2s linear infinite;
     animation: rotating 2s linear infinite;
   }
+
+
+/* BACKGROUND GRADIENT ANIMATION */
+body {
+	background: linear-gradient(-45deg, #e9af9d, #f75794, #8aa3ac, #23d5ab);
+	background-size: 600% 200%;
+	animation: gradient 15s ease infinite;
+	height: 100vh;
+}
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
