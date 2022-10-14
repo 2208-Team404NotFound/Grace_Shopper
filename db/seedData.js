@@ -2,6 +2,7 @@ const client = require('./client');
 const { getUser, createUser, getUserById, getUserByUsername } = require('./users');
 const { createAlbums, getAllAlbums } = require('./albums');
 const { createOrders, getAllOrders } = require('./orders');
+const { getOrdersAlbums } = require('./orders_albums');
 
 const dropTables = async () => {
     try {
@@ -126,6 +127,23 @@ const createInitialOrders = async () => {
     }
 };
 
+const createInitialOrdersAlbums = async () => {
+    try {
+        console.log('Starting to create orders albums...');
+
+        const ordersAlbumsToCreate = [
+            { order_id: 1 },
+            { order_id: 2 }
+        ];
+
+        const ordersAlbums = await Promise.all(ordersAlbumsToCreate.map(createOrders));
+
+        console.log(`Orders albums created! ${ordersAlbums}`);
+    } catch (error) {
+        console.log(`Error creating orders albums: ${error}`);
+    }
+};
+
 const rebuildDB = async () => {
     try {
         await dropTables();
@@ -133,6 +151,7 @@ const rebuildDB = async () => {
         await createInitialUsers();
         await createInitialAlbums();
         await createInitialOrders();
+        await createInitialOrdersAlbums();
         await testDB();
     } catch (error) {
         console.log(`Error during rebuildDB: ${error}`);
@@ -141,7 +160,7 @@ const rebuildDB = async () => {
 
 const testDB = async () => {
     console.log('Starting to test database...');
-    const results = await getAllOrders(1);
+    const results = await getOrdersAlbums(1);
     console.log(results);
     console.log('Finished testing!');
 }
