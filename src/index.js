@@ -2,6 +2,7 @@ import { createRoot } from 'react-dom/client';
 import { useEffect, useState } from 'react';
 import { Login, Register, Albums } from "./components"
 import { BrowserRouter, Route, Link, Routes } from 'react-router-dom'
+import { CgShoppingCart } from 'react-icons/cg';
 
 const App = () => {
     const [token, setToken] = useState(localStorage.getItem('markgeeharrison'));
@@ -25,7 +26,7 @@ const App = () => {
                     <Link to="Login"> Login </Link>
                     <Link to="Register"> Register </Link>
                     <Link to="Albums"> Albums </Link>
-                    <Link to="Orders"> Cart </Link>
+                    <Link to="Orders"> <CgShoppingCart /> </Link>
                 </header>
 
                 <main>
