@@ -1,5 +1,6 @@
 const express = require('express');
 const ordersRouter = express.Router();
+const { requireUser, requireAdmin } = require('./utils')
 const {
     getAllOrders,
     createOrders,
@@ -9,7 +10,7 @@ const {
     destroyOrders
 } = require('../db');
 
-ordersRouter.get('/', async (req, res) => {
+ordersRouter.get('/', requireUser, async (req, res) => {
     try {
         const allOrders = await getAllOrders();
 
@@ -19,7 +20,7 @@ ordersRouter.get('/', async (req, res) => {
     }
 });
 
-ordersRouter.post('/', async (req, res) => {
+ordersRouter.post('/', requireUser, async (req, res) => {
     const { user_id, price, is_active } = req.body;
 
     try {
@@ -36,13 +37,5 @@ ordersRouter.post('/', async (req, res) => {
         throw error;
     }
 });
-
-// ordersRouter.put()
-
-// ordersRouter.patch('/:order_id', async (req, res) => {
-//     const { order_id } = req.params;
-//     const { user_id, price, is_active } = req.body;
-
-// })
 
 module.exports = ordersRouter;
