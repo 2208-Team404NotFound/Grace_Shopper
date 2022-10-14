@@ -7,8 +7,19 @@ const requireUser = (req, res, next) => {
             error: '401'
         });
     }
-
     next();
 };
 
-module.exports = { requireUser };
+const requireAdmin = (req, res, next) => {
+    if (!req.user.isAdmin) {
+        res.status(401);
+        return next({
+            name: 'Admin Required',
+            message: 'You must be an Admin to perform this action',
+            error: '401'
+        })
+    }
+    next();
+}
+
+module.exports = { requireUser, requireAdmin };
