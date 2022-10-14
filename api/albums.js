@@ -1,6 +1,6 @@
 const express = require('express');
 const albumsRouter = express.Router();
-const { requireUser } = require('./utils');
+const { requireUser, requireAdmin } = require('./utils');
 const {
     getAllAlbums,
     getAlbumsById,
@@ -19,7 +19,7 @@ albumsRouter.get('/', async (req, res) => {
     }
 });
 
-albumsRouter.post('/', async (req, res) => {
+albumsRouter.post('/', requireAdmin, async (req, res) => {
     const { artist, album_name, year, album_price, img_url } = req.body;
 
     try {
@@ -38,7 +38,7 @@ albumsRouter.post('/', async (req, res) => {
     }
 });
 
-albumsRouter.patch('/:album_id', async (req, res) => {
+albumsRouter.patch('/:album_id', requireAdmin, async (req, res) => {
     const { album_id } = req.params;
     const { artist, album_name, year, album_price, img_url } = req.body;
     const updateFields = {};
