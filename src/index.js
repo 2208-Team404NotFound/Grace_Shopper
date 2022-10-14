@@ -2,7 +2,9 @@ import { createRoot } from 'react-dom/client';
 import { useEffect, useState } from 'react';
 import { Login, Register, Albums } from "./components"
 import { BrowserRouter, Route, Link, Routes } from 'react-router-dom'
+
 import { CgShoppingCart } from 'react-icons/cg';
+import { BsDiscFill } from 'react-icons/bs';
 
 const App = () => {
     const [token, setToken] = useState(localStorage.getItem('markgeeharrison'));
@@ -22,7 +24,7 @@ const App = () => {
             <div>
 
                 <header>
-                    <h1 id='logo'>The Cassette Shop</h1>
+                    <h1 id='logo'>The Cassette Shop <BsDiscFill className='icon-disc rotating' /> </h1>
                     <Link to="Login"> Login </Link>
                     <Link to="Register"> Register </Link>
                     <Link to="Albums"> Albums </Link>
