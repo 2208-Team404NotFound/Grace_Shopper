@@ -1,5 +1,6 @@
-import { getAllAlbums, createAlbums } from './api';
-import { useEffect, useState } from 'react'
+import { getAllAlbums, createAlbums, getSingleAlbum } from './api';
+import { useEffect, useState, useParams } from 'react'
+
 
 export const Albums = ({ token }) => {
     const [albums, setAlbums] = useState([]);
@@ -19,6 +20,16 @@ export const Albums = ({ token }) => {
         const results = await createAlbums(token, artist, album_name, year, album_price, img_url);
         setAlbums(current => [...current, results]);
     };
+
+    const viewAlbum = async () => {
+        let { album_name } = useParams();
+        const results = await getSingleAlbum(album_name);
+        return (
+            <div>
+                <h2>Description: {results}</h2>
+            </div>
+        )
+    }
 
     return (
         <>

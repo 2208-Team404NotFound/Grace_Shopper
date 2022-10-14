@@ -46,7 +46,17 @@ export const getAllAlbums = async () => {
     return results;
 };
 
-export const createAlbums = async (token, artist, albumName, year, price) => {
+export const getSingleAlbum = async (album_name) => {
+    const response = await fetch(`${BASE_URL}/albums/:album_name`, {
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    });
+    const results = await response.json();
+    return results;
+};
+
+export const createAlbums = async (token, artist, album_name, year, price) => {
     const response = await fetch(`${BASE_URL}/albums`, {
         method: 'POST',
         header: {
@@ -54,7 +64,7 @@ export const createAlbums = async (token, artist, albumName, year, price) => {
             'Authorization': `Bearer ${token}`
         },
         body: JSON.stringify({
-            artist, albumName, year, price
+            artist, album_name, year, price
         })
     });
     const results = await response.json();
