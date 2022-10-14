@@ -33,6 +33,7 @@ const App = () => {
                         <Route path="Login" element={<Login setToken={setToken} />} />
                         <Route path="Register" element={<Register />} />
                         <Route path="Albums" element={<Albums token={token} />} />
+                        <Route path="/Albums/:album_name" element={<viewAlbum />} />
                     </Routes>
                 </main>
 

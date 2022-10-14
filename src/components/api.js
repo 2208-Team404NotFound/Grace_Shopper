@@ -46,11 +46,14 @@ export const getAllAlbums = async () => {
     return results;
 };
 
-export const getSingleAlbum = async (album_name) => {
-    const response = await fetch(`${BASE_URL}/albums/:album_name`, {
+export const getSingleAlbum = async (album_name, artist, year, price) => {
+    const response = await fetch(`${BASE_URL}/albums/:${album_name}`, {
         headers: {
             'Content-Type': 'application/json'
-        }
+        },
+        body: JSON.stringify({
+            artist, album_name, year, price
+        })
     });
     const results = await response.json();
     return results;

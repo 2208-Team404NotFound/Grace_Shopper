@@ -1,5 +1,7 @@
 import { getAllAlbums, createAlbums, getSingleAlbum } from './api';
-import { useEffect, useState, useParams } from 'react'
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom'
+
 
 
 export const Albums = ({ token }) => {
@@ -21,9 +23,10 @@ export const Albums = ({ token }) => {
         setAlbums(current => [...current, results]);
     };
 
-    const viewAlbum = async () => {
-        let { album_name } = useParams();
-        const results = await getSingleAlbum(album_name);
+    const viewAlbum = async (event) => {
+        event.preventDefault();
+        let { album_name, price, year, artist } = useParams();
+        const results = await getSingleAlbum(album_name, price, year, artist);
         return (
             <div>
                 <h2>Description: {results}</h2>
@@ -53,6 +56,7 @@ export const Albums = ({ token }) => {
                                 <p className='album-year'>{album.year}</p>
                                 <p className='album-price'>{album.album_price}</p>
                                 <button className='add-to-cart'>Add to Cart</button>
+                                <button onClick={(event) => viewAlbum(event)} type='submit'>View album</button>
                             </div>
                         )
                     })}
