@@ -19,10 +19,10 @@ const getAllOrders = async (user_id) => {
 const createOrders = async ({ user_id, price, is_active }) => {
     try {
         const { rows: [orders] } = await client.query(`
-        INSERT INTO orders (user_id)
-        VALUES ($1)
+        INSERT INTO orders(user_id, price, is_active)
+        VALUES ($1, $2, $3)
         RETURNING *;
-        `, [user_id]);
+        `, [user_id, price, is_active]);
 
         return orders;
     } catch (error) {
@@ -43,7 +43,7 @@ const getOrdersById = async (id) => {
     }
 };
 
-const getOrdersByUserId = async ({ user_id }) => {
+const getOrdersByUserId = async (user_id) => {
     try {
         const { rows: orders } = await client.query(`
         SELECT * FROM orders
@@ -56,23 +56,15 @@ const getOrdersByUserId = async ({ user_id }) => {
     }
 };
 
-const updateOrders = async ({ id, ...fields }) => {
-
-    const setString = Object.keys(fields).map(
-        (key, index) => `"${key}"=$${index + 1}`
-    ).join(', ');
-
+const updateOrders = async (id) => {
     try {
-        if (setString.length > 0) {
-            const { rows: [orders] } = await client.query(`
-            UPDATE orders
-            SET ${setString}
-            WHERE id=${id}
-            RETURNING *;
-            `, Object.values(fields));
+        await client.query(`
+        UPDATE orders
+        SET is_active=TRUE
+        WHERE id=$1;
+        `, [id]);
 
-            return orders;
-        } else return;
+        return;
     } catch (error) {
         throw error;
     }
