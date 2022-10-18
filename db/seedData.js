@@ -116,7 +116,8 @@ const createInitialOrders = async () => {
         console.log('Starting to create orders...');
 
         const ordersToCreate = [
-            { user_id: 1, price: 9.99, is_active: true },
+            { user_id: 1, price: 9.99, is_active: false },
+            { user_id: 2, price: 10.98, is_active: true },
         ];
 
         const orders = await Promise.all(ordersToCreate.map(createOrders));
@@ -132,8 +133,8 @@ const createInitialOrdersAlbums = async () => {
         console.log('Starting to create orders albums...');
 
         const ordersAlbumsToCreate = [
-            { order_id: 1 },
-            { order_id: 2 }
+            { order_id: 1, album_id: 3, quantity: 1 },
+            { order_id: 2, album_id: (6, 5), quantity: 1 }
         ];
 
         const ordersAlbums = await Promise.all(ordersAlbumsToCreate.map(createOrders));
@@ -152,7 +153,7 @@ const rebuildDB = async () => {
         await createInitialAlbums();
         await createInitialOrders();
         await createInitialOrdersAlbums();
-        await testDB();
+        // await testDB();
     } catch (error) {
         console.log(`Error during rebuildDB: ${error}`);
     }
@@ -160,7 +161,7 @@ const rebuildDB = async () => {
 
 const testDB = async () => {
     console.log('Starting to test database...');
-    const results = await getAllOrders(1);
+    const results = await getAllOrders(user_id = 2);
     console.log(results);
     console.log('Finished testing!');
 }
