@@ -57,8 +57,8 @@ const createTables = async () => {
 
         CREATE TABLE orders_albums (
             id SERIAL PRIMARY KEY,
-            order_id INT REFERENCES albums(id),
-            album_id INT REFERENCES orders(id),
+            order_id INT REFERENCES orders(id),
+            album_id INT REFERENCES albums(id),
             quantity INT NOT NULL
         ); `
 
@@ -116,7 +116,7 @@ const createInitialOrders = async () => {
         console.log('Starting to create orders...');
 
         const ordersToCreate = [
-            { user_id: 1, price: 9.99, is_active: false }
+            { user_id: 1, price: 9.99, is_active: true },
         ];
 
         const orders = await Promise.all(ordersToCreate.map(createOrders));
@@ -160,7 +160,7 @@ const rebuildDB = async () => {
 
 const testDB = async () => {
     console.log('Starting to test database...');
-    const results = await getOrdersAlbums(1);
+    const results = await getAllOrders(1);
     console.log(results);
     console.log('Finished testing!');
 }

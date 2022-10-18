@@ -12,7 +12,7 @@ const getOrdersAlbums = async () => {
     }
 };
 
-const addAlbumsToCart = async (order_id, album_id) => {
+const addAlbumsToCart = async ({ order_id, album_id }) => {
     try {
         const { rows: [album] } = await client.query(`
         INSERT INTO orders_albums (order_id, album_id)
