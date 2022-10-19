@@ -36,7 +36,11 @@ main {
 }
 
 .search-bar {
-    /* border: 1px solid green; */
+    display: flex;
+    justify-content: center;
+
+    padding: 2em;
+    padding-top: 2em;
 }
 
 .album-container {
