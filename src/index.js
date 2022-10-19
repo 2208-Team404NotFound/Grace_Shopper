@@ -25,10 +25,10 @@ const App = () => {
 
                 <header>
                     <h1 id='logo'>Decent Cassette Shop&nbsp;<BsDiscFill className='icon-disc rotating' /> </h1>
-                    <Link to="Login"> Login </Link>
-                    <Link to="Register"> Register </Link>
-                    <Link to="Albums"> Albums </Link>
-                    <Link to="Orders"> <CgShoppingCart /> </Link>
+                    <Link id='login' to="Login"> Login </Link>
+                    <Link id='register' to="Register"> Register </Link>
+                    <Link id='albums' to="Albums"> Albums </Link>
+                    <Link id='shopping-cart' to="Orders"> <CgShoppingCart /> </Link>
                 </header>
 
                 <main>

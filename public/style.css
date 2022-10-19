@@ -9,12 +9,35 @@ header {
     justify-content: space-between;
 
     width: 100%;
+
 }
 
 #logo {
     text-align: center;
     width: 400px;
     margin: 2%;
+    color: black;    
+}
+#login {
+    margin-top: 30px;
+    text-decoration: none;    
+    color: black;    
+}
+#register {
+    margin-top: 30px;
+    text-decoration: none;    
+    color: black;    
+}
+#albums {
+    margin-top: 30px;
+    text-decoration: none;    
+    color: black;    
+}
+#shopping-cart {
+    margin-top: 30px;
+    margin-right: 5em;
+    text-decoration: none;
+    color: black;    
 }
 
 nav {
