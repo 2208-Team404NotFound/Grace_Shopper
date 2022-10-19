@@ -24,7 +24,7 @@ const App = () => {
             <div>
 
                 <header>
-                    <h1 id='logo'>The Cassette Shop <BsDiscFill className='icon-disc rotating' /> </h1>
+                    <h1 id='logo'>Decent Cassette Shop&nbsp;<BsDiscFill className='icon-disc rotating' /> </h1>
                     <Link to="Login"> Login </Link>
                     <Link to="Register"> Register </Link>
                     <Link to="Albums"> Albums </Link>
