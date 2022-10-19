@@ -1,6 +1,6 @@
 import { createRoot } from 'react-dom/client';
 import { useEffect, useState } from 'react';
-import { Login, Register, Albums } from "./components"
+import { Login, Register, Albums, Cart } from "./components"
 import { BrowserRouter, Route, Link, Routes } from 'react-router-dom'
 
 import { CgShoppingCart } from 'react-icons/cg';
@@ -28,7 +28,7 @@ const App = () => {
                     <Link id='login' to="Login"> Login </Link>
                     <Link id='register' to="Register"> Register </Link>
                     <Link id='albums' to="Albums"> Albums </Link>
-                    <Link id='shopping-cart' to="Orders"> <CgShoppingCart /> </Link>
+                    <Link id='shopping-cart' to="Cart"> <CgShoppingCart /> </Link>
                 </header>
 
                 <main>
@@ -36,6 +36,7 @@ const App = () => {
                         <Route path="Login" element={<Login setToken={setToken} />} />
                         <Route path="Register" element={<Register />} />
                         <Route path="Albums" element={<Albums token={token} />} />
+                        <Route path="Cart" element={<Cart />} />
                     </Routes>
                 </main>
 
