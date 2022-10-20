@@ -1,15 +1,25 @@
-.album-cover {
-    height: 250px;
-    width: 250px;
-}
-
 header {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-
+    
     width: 100%;
+    
+}
 
+nav {
+    margin: 1%;
+    width: 5em;
+}
+
+main {
+    display: flex;
+    flex-direction: row;
+}
+
+.album-cover {
+    height: 250px;
+    width: 250px;
 }
 
 #logo {
@@ -45,16 +55,6 @@ header {
     margin-right: 5em;
     text-decoration: none;
     color: black;    
-}
-
-nav {
-    margin: 1%;
-    width: 5em;
-}
-
-main {
-    display: flex;
-    flex-direction: row;
 }
 
 .main-body {
@@ -187,15 +187,12 @@ body {
     display: flex;
     flex-direction: row;
 }
-.cart-container .level-two {
-}
+
 .cart-container .level-three {
     width: 100%;
 }
 
-.cart-container .tile {
-    border: 1px solid blue;
-    
+.cart-container .tile { 
     display: flex;
     flex-direction: column;
     margin: 10px;
@@ -214,8 +211,6 @@ body {
 }
 
 .cart-container .promo-panel {
-    border: 1px solid blue;
-    
     height: 30%;
     margin: 10px;
     padding: 10px;
@@ -229,8 +224,6 @@ body {
 }
 
 .cart-container .checkout-panel {
-    border: 1px solid green;
-
     display: flex;
     flex-direction: column;
     margin: 10px;
