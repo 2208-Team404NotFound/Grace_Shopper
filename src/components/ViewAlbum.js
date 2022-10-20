@@ -2,7 +2,7 @@ import React from 'react';
 
 export const ViewAlbum = () => {
     return (
-        <div>
+        <div className='album-grid'>
            
             <img className='album-cover' src='https://static.qobuz.com/images/covers/ka/93/zzn6saqkx93ka_600.jpg' />
             <p>Artist: Bladee</p>

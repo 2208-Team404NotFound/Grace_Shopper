@@ -30,7 +30,6 @@ const App = () => {
                     <Link id='register' to="Register"> Register </Link>
                     <Link id='albums' to="Albums"> Albums </Link>
                     <Link id='shopping-cart' to="Orders"> <CgShoppingCart /> </Link>
-                    <Link id='view-album' to="View-album"> View album </Link>
                 </header>
 
                 <main>
