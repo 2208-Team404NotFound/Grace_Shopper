@@ -40,6 +40,13 @@ header {
     color: black;    
 }
 
+#view-album {
+    margin-top: 30px;
+    margin-right: 5em;
+    text-decoration: none;
+    color: black;    
+}
+
 nav {
     margin: 1%;
     width: 5em;

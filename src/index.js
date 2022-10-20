@@ -5,6 +5,7 @@ import { BrowserRouter, Route, Link, Routes } from 'react-router-dom'
 
 import { CgShoppingCart } from 'react-icons/cg';
 import { BsDiscFill } from 'react-icons/bs';
+import { ViewAlbum } from './components/ViewAlbum';
 
 const App = () => {
     const [token, setToken] = useState(localStorage.getItem('markgeeharrison'));
