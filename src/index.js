@@ -5,6 +5,7 @@ import { BrowserRouter, Route, Link, Routes } from 'react-router-dom'
 
 import { CgShoppingCart } from 'react-icons/cg';
 import { BsDiscFill } from 'react-icons/bs';
+import { ViewAlbum } from './components/ViewAlbum';
 
 const App = () => {
     const [token, setToken] = useState(localStorage.getItem('markgeeharrison'));
@@ -36,6 +37,7 @@ const App = () => {
                         <Route path="Login" element={<Login setToken={setToken} />} />
                         <Route path="Register" element={<Register />} />
                         <Route path="Albums" element={<Albums token={token} />} />
+                        <Route path="View-album" element={<ViewAlbum />} />
                     </Routes>
                 </main>
 
