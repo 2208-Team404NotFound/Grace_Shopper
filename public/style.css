@@ -82,7 +82,7 @@ main {
 .album-grid {
     display: flex;
     flex-direction: column;
-    
+
     margin: 10px;
     padding: 10px;
 
@@ -170,4 +170,98 @@ body {
 	100% {
 		background-position: 0% 50%;
 	}
+}
+
+
+/* SHOPPING CART ELEMENTS */
+.cart-container {
+    width: 100%;
+    font-size: 0.8rem;
+
+    display: grid;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.cart-container .level-one {
+    display: flex;
+    flex-direction: row;
+}
+.cart-container .level-two {
+}
+.cart-container .level-three {
+    width: 100%;
+}
+
+.cart-container .tile {
+    border: 1px solid blue;
+    
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    padding: 10px;
+    
+    background: rgba( 255, 255, 255, 0.15 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 20px );
+    -webkit-backdrop-filter: blur( 20px );
+    border-radius: 10px;
+    border: 2px solid rgba( 255, 255, 255, 0.18 );
+}
+
+.cart-container .item {
+    color: rgb(225, 255, 200);
+}
+
+.cart-container .promo-panel {
+    border: 1px solid blue;
+    
+    height: 30%;
+    margin: 10px;
+    padding: 10px;
+
+    background: rgba( 255, 255, 255, 0.15 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 20px );
+    -webkit-backdrop-filter: blur( 20px );
+    border-radius: 10px;
+    border: 2px solid rgba( 255, 255, 255, 0.18 );
+}
+
+.cart-container .checkout-panel {
+    border: 1px solid green;
+
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    padding: 10px;
+
+    background: rgba( 255, 255, 255, 0.15 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 20px );
+    -webkit-backdrop-filter: blur( 20px );
+    border-radius: 10px;
+    border: 2px solid rgba( 255, 255, 255, 0.18 );
+}
+
+.album-cover-checkout {
+    height: 11em;
+    width: 11em;
+    padding-top: 1em;
+
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    padding: 1px;
+
+    background: rgba( 255, 255, 255, 0.15 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 20px );
+    -webkit-backdrop-filter: blur( 20px );
+    border-radius: 10px;
+    border: 2px solid rgba( 255, 255, 255, 0.18 );
+}
+
+.cart-container button:hover {
+    color: rgb(240, 120, 120);
 }
