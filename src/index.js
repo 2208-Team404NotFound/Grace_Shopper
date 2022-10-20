@@ -38,6 +38,7 @@ const App = () => {
                         <Route path="Register" element={<Register />} />
                         <Route path="Albums" element={<Albums token={token} />} />
                         <Route path="Cart" element={<Cart />} />
+                        <Route path="ViewAlbum" element={<ViewAlbum />} />
                     </Routes>
                 </main>
 
