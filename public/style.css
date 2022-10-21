@@ -258,3 +258,73 @@ body {
 .cart-container button:hover {
     color: rgb(240, 120, 120);
 }
+
+
+/* Full Album Display */
+
+.album-grid-full-display-cotainer {
+    display: flex;
+    justify-content: center;
+
+    width: 100%;
+}
+
+.album-grid-full-display {
+    display: flex;
+    flex-direction: column;
+
+    margin: 10px;
+    padding: 10px;
+
+    background: rgba( 255, 255, 255, 0.15 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 20px );
+    -webkit-backdrop-filter: blur( 20px );
+    border-radius: 10px;
+    border: 2px solid rgba( 255, 255, 255, 0.18 );
+}
+
+.album-cover-full-display {
+    width: 30em;
+    height: 30em;
+
+    margin: 5px;
+    margin-bottom: 2em;
+    padding: 0.7em;
+
+    background: rgba( 255, 255, 255, 0.15 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 20px );
+    -webkit-backdrop-filter: blur( 20px );
+    border-radius: 10px;
+    border: 2px solid rgba( 255, 255, 255, 0.18 );
+}
+
+.line-display {
+    /* border: 1px solid red; */
+
+    display: flex;
+}
+
+.mini-title {
+    /* border: 1px solid green; */
+    font-weight: light;
+    color: rgb(225, 255, 200);
+}
+
+.mini-title-description {
+    /* border: 1px solid blue; */
+    font-weight: bold;
+}
+
+ol {
+    /* border: 1px solid green; */
+    font-weight: lighter;
+    color: rgb(225, 255, 200);
+}
+
+li > p {
+    /* border: 1px solid blue; */
+    font-weight: bold;
+    color: black;
+}
