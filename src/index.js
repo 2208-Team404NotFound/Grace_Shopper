@@ -1,6 +1,6 @@
 import { createRoot } from 'react-dom/client';
 import { useEffect, useState } from 'react';
-import { Login, Register, Albums, Cart } from "./components"
+import { Login, Register, Albums, Cart, Home } from "./components"
 import { BrowserRouter, Route, Link, Routes } from 'react-router-dom'
 
 import { CgShoppingCart } from 'react-icons/cg';
@@ -25,7 +25,8 @@ const App = () => {
             <div>
 
                 <header>
-                    <h1 id='logo'>Decent Cassette Shop&nbsp;<BsDiscFill className='icon-disc rotating' /> </h1>
+                    <h1 id='logo'>420 BPM&nbsp;<BsDiscFill className='icon-disc rotating' /> </h1>
+                    <Link id='home' to="Home"> Home </Link>
                     <Link id='login' to="Login"> Login </Link>
                     <Link id='register' to="Register"> Register </Link>
                     <Link id='albums' to="Albums"> Albums </Link>
@@ -34,6 +35,7 @@ const App = () => {
 
                 <main>
                     <Routes>
+                        <Route path="Home" element={<Home />} />
                         <Route path="Login" element={<Login setToken={setToken} />} />
                         <Route path="Register" element={<Register />} />
                         <Route path="Albums" element={<Albums token={token} />} />
